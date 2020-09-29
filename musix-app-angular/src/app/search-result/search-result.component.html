@@ -1,0 +1,104 @@
+<section class="search-results-1 container-fluid mr-auto">
+    <h3>top songs you were looking for</h3>
+    <table class="table mr-auto ml-auto">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Song</th>
+            <!-- <th scope="col">Favourite</th>
+            <th scope="col">Recommend</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="song" *ngFor="let track of tracksArray; let i=index" >
+            <th scope="row">{{i + 1}}</th>
+            <td>
+                <div style="height: auto;">
+                    <div class="alert alert-secondary" role="alert">
+                        <h5 class="card-title">{{track.name}}</h5>
+                        <p>By : {{track.artistName}}</p>
+                        <audio controls>
+                            <source [(src)]="track.previewURL" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div>
+                            <div> 
+                                <!-- style="visibility: hidden;" -->
+                                <button style="border: 0;" (click)="setCommentVisible(track.id)">comment</button>
+                                <input style="visibility: hidden;" id="input:{{track.id}}" type="text" class="commentText">
+                                <button style="visibility: hidden;" id="button:{{track.id}}" (click)="postComment(track.id, track.name)"  class="btn btn-warning btn-sm-2">post</button>
+                            </div>
+                            <nav>
+                              <button class=" btn btn-default btn-circle" (click)="addOrRemoveFavourite(track.id, track.name,i, track.previewURL)" [class.myClass]="favArrray[i]">
+                                <mdb-icon fas icon="heart"></mdb-icon></button>
+                                <label> &nbsp;Favorite </label>
+                                
+                                <button class="btn btn-default btn-circle" (click)="recommendOrUnrecommend(track.id, track.name,i, track.previewURL)" [class.myRem]="recArray[i]">
+                                <mdb-icon fas icon="thumbs-up"></mdb-icon></button>
+                                <label> &nbsp;Recommend </label>
+                            </nav>
+                        </div>  
+                    </div>
+                </div>
+            </td>    
+            <!-- <td>
+                <input (change)="addOrRemoveFavourite(track.id, track.name)" type="checkbox" value="{{track.id}}" class="favourite">
+            </td>
+            <td>
+                <input (change)="recommendOrUnrecommend(track.id, track.name)" type="checkbox" value="{{track.id}}" class="recommend">
+            </td>  -->
+          </tr>
+        </tbody>
+      </table>
+</section>
+<section class="searchResults-videos mr-auto ml-auto">
+    <h3><b>Top recommended Videos</b></h3>
+    <div class="card-deck">
+      <div *ngFor="let video of videoArray" class="col col-lg-4 col-md-4 col-12 mt-3" >
+      <div class="card h-100 bg-light">
+           <img class="card-img-top" src="{{video.snippet.thumbnails.medium.url}}" alt="Card image cap">
+           <div class="card-body">
+           <h3 class="card-title ">
+            <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+                {{video.snippet.title}}
+            </a>
+            </h3>
+           <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+           </div>
+      </div>
+      </div>
+    </div>
+<!-- 
+    <h3>Matching videos suggestions just for You!...</h3>
+    <div *ngFor="let video of videoArray" class="container-fluid mr-auto ml-auto">
+        <ul class="nav">
+          <li class="nav-item">
+            <div class="card" style="width: 18rem;">
+              <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="Thumbnails">
+              <div class="card-body">
+                <p class="card-name">
+                  <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+                    {{video.snippet.title}}
+                  </a>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div> -->
+</section>
+
+<section class="search-results-2 mr-auto ml-auto">
+    <h3>Top Artist matching you're interest!</h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div *ngFor="let artist of artistArray" class="card mr-auto ml-auto" style="width: 18rem;">
+                <img (click)="openArtist(artist)" src="https://api.napster.com/imageserver/v2/artists/{{artist.id}}/images/200x200.jpg?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4" class="card-img-top" alt="../assets/imageUnavailable.png">
+                <div class="card-body">
+                  <p class="card-text">{{artist.id}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,24 @@
+.btn{
+    padding-right: 2px;
+  }
+    .btn-circle{
+      border-radius: 50%;
+      color: white;
+      outline: none;
+      box-shadow: none;
+      
+  }
+  .btn-circle:focus,.btn-circle:active:focus,.btn-circle.active:focus,
+  .btn-circle.focus,.btn-circle:active.focus,.btn-circle.active.focus {
+      outline: none;
+  }
+  .clear{
+    clear:both;
+}
+.myClass{
+    color :red;
+  }
+
+.myRem{
+    color: rgb(0, 204, 0);
+ }

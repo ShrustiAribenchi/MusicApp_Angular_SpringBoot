@@ -1,0 +1,68 @@
+img{
+    
+    max-width:100%; 
+     height:auto; 
+    max-width: 250px;
+    box-shadow: 0px 0px 10px 0px #000;
+    padding: 3px 3px 3px 3px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+/*
+  .iconBtn{
+       border-radius: 50%; 
+      background-color:grey; 
+  border: none; /
+  color: white; /* White text */
+  /* padding: 12px 16px; Some padding 
+  font-size: 16px; Set a font size 
+  cursor: pointer;
+  }
+*/
+.btn{
+  padding-right: 2px;
+}
+  .btn-circle{
+    border-radius: 50%;
+    color: white;
+    outline: none;
+    box-shadow: none;
+    
+}
+.btn-circle:focus,.btn-circle:active:focus,.btn-circle.active:focus,
+.btn-circle.focus,.btn-circle:active.focus,.btn-circle.active.focus {
+    outline: none;
+}
+/*
+.fav:link,
+.fav:visited{
+color: black;
+} 
+
+ .slider{
+    color: black;
+}
+*/
+.clear{
+    clear:both;
+}
+.myClass{
+    color :red;
+  }
+
+.myRem{
+    color: rgb(0, 204, 0);
+ }
+  /* .fav{
+    color: white;
+  }
+  .active{
+    color: red;
+  } */
+
+ 

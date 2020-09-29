@@ -1,0 +1,173 @@
+
+<!-- User profile page -->
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col col-lg-4 col-md-4 col-12 text-center">
+      <!--Sidebar content-->
+      <img 
+      [src]="url" 
+      alt="Artist" class="img-circle">
+      <nav class="nav flex-column mt-15 pt-4">
+          <button (click)="toggle('profile')" class="btn btn-light btn-sm p-1"><h4>Profile</h4></button>
+          <button (click)="toggle('favourite')" class="btn btn-light btn-sm mt-3 p-1"><h4>Favourite</h4></button>
+          <button (click)="toggle('recommend')" class="btn btn-light btn-sm mt-3 p-1"><h4>Recommendation</h4></button>
+          <button (click)="toggle('comment')" class="btn btn-light btn-sm mt-3 mb-3 p-1"><h4>Comments</h4></button>
+      </nav>
+    </div>
+
+
+    <div class="col col-lg-8 col-md-8 col-12 bg-light text-dark">
+      <!--Body content-->
+      <div *ngIf="tprofile" name="profileContainer" class="profile text-center">
+          <h3>Your profile</h3>
+          <img class="img-circle" [src]="userDetails.displayPicture">
+
+          <!-- change profile photo
+          <img [src]="url"> <br/>
+  <input type='file' (change)="onSelectFile($event)"> 
+-->
+          <!-- <h4>Name : {{ userName }}</h4> -->
+          <h4>Name: {{userDetails.name}}</h4>
+          <h4>User ID : {{ userDetails.email }} </h4>
+          <button (click)="updateProfile()" class="btn btn-success">
+            Update Profile
+          </button>
+      </div>
+
+      <div *ngIf="tfavourite" name="favouriteContainer" class="favourite ml-2 mt-5">
+          <div class="container">
+            <div *ngFor="let fav of favArray" class="text-danger bg-light">
+              <button *ngIf="fav.favourite == 'yes'" class="btn btn-dark text-light mt-3" style="border: 0; outline:none;">
+                {{fav.songName | uppercase}}<br>
+                <audio controls>
+                  <source [(src)]="fav.songUrl" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </button>
+            </div>
+          </div>
+      </div>
+
+      <div *ngIf="trecommend" name="recommendContainer" class="recommend mt-5 bg-light">
+        <div class="container p-0">
+          <div *ngFor="let rec of recArray" class="text-danger bg-light">
+            <button *ngIf="rec.recommend == 'yes'"class="btn btn-dark text-light mt-3" style="border: 0; outline:none;">
+              {{rec.songName | uppercase}}<br>
+              <audio controls>
+                <source [(src)]="rec.songUrl" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </button>
+          </div>
+      </div>
+      </div>
+
+      <div *ngIf="tcomment" name="commentContainer" class="comment mt-5 bg-light">
+        <div class="container">
+          <div *ngFor="let com of commentArray" class="text-dark bg-light">
+            <button class="btn mt-3">
+              <button class="btn btn-dark text-light mr-auto">
+                {{com.songName}}:
+              </button>
+              <button class="btn btn-danger">
+                {{com.comment}}
+              </button>
+               
+            </button>
+          </div>
+      </div>
+      </div>
+        
+    </div>
+    <!-- end of row-fluid -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- designed-previous version. -->
+<!-- <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col col-lg-4 col-md-4 col-12">
+        
+        <nav class="nav flex-column mt-15 pt-5">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a (click)="toggle('comments')" class="nav-link active decoration text-danger" ><h4>Comments</h4></a>
+                </li>
+                <li class="nav-item">
+                  <a (click)="toggle('favourites')"class="nav-link active decoration text-danger"><h4>Favourites</h4></a>
+                </li>
+                <li class="nav-item">
+                  <a (click)="toggle('recommendation')" class="nav-link active decoration text-danger" ><h4>Recommendation</h4></a>
+                </li>
+                <li class="nav-item">
+                  <a (click)="toggle('countrySpecial')"class="nav-link active decoration text-danger" ><h4>Country Special</h4></a>
+                </li>
+              </ul>
+            
+          </nav>
+      </div>
+
+ 
+      <div class="col col-lg-8 col-md-8 col-12">
+        
+        <div name="artistContainer" class="jumbotron jumbotron-fluid bg-danger text-light">
+            <div class="container">
+              <h3 class="display-4">Comments</h3>
+              <p class="lead">
+                    Van Buuren has won a number of accolades. 
+                    He has been ranked the number one DJ by DJ Mag a 
+                    record of five times, four years in a row.[5] 
+                    He was ranked fourth on the DJ Mag Top 100 DJs list in 2015, 
+                    2016, and 2019,[6] and third in 2017.[7] In 2014, 
+                    he was nominated for a Grammy Award for Best Dance 
+                    Recording for his single "This Is What It Feels Like"
+                    featuring Trevor Guthrie,[8] which makes him the fourth 
+                    trance artist ever to receive a Grammy Award nomination.[9] 
+                    In the United States, he holds the record for most entries, 
+                    twenty-one, on the Billboard Dance/Electronic Albums chart.[10] 
+
+                </p>
+                <small>source: wikipedia</small>
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+ -->

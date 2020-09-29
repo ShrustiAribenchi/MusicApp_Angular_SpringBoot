@@ -1,0 +1,133 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col col-lg-4 col-md-4 col-12">
+        <!--Sidebar content-->
+        <img  
+        src="https://api.napster.com/imageserver/v2/artists/{{artistId}}/images/500x500.jpg?apikey=N2M0MDFiNTAtYzVkYi00MTM2LWE5OGEtZTZiZWZkZmU1YjU1" 
+        alt="Artist" class="img-fluid">
+        <nav class="nav flex-column mt-15 pt-5">
+            <button (click)="toggle('artist')" class="btn btn-light btn-sm mt-3 p-1"><h4>Artist</h4></button>
+            <button (click)="toggle('album')" class="btn btn-light btn-sm mt-3 p-1"><h4>Album</h4></button>
+            <button (click)="toggle('track')" class="btn btn-light btn-sm mt-3 p-1"><h4>Songs</h4></button>
+            <button (click)="toggle('video')" class="btn btn-light btn-sm mt-3 mb-3 p-1"><h4>Video</h4></button>
+            <!-- <a class="nav-link active text-danger menuLinks"><h4>Album</h4></a> -->
+          </nav>
+      </div>
+  
+  
+      <div class="col col-lg-8 col-md-8 col-12">
+        <!--Body content-->
+        <div *ngIf="tartist" name="artistContainer" class="jumbotron jumbotron-fluid text-dark">
+            <div class="container">
+              <h3 class="display-4">{{artistName}}</h3>
+              <p class="lead">
+                    
+                  Artist Name  : {{artistName}} <br>
+                   <!-- Artist id   : {{artistId}} -->
+  
+                </p>
+                <small>{{artistBio}}</small>
+            </div>
+          </div>
+          
+          <div *ngIf="talbum" name="albumContainer" class="card-group" >
+            <div *ngFor="let album of albumArray" class="col col-lg-4 col-md-4 col-12 mt-3" >
+              <button (click)=fetchAlbum(album) bg-light class="albumBtn p-0">  
+              <div class="card bg-dark text-white">
+                    <img class="card-img" src="https://api.napster.com/imageserver/v2/albums/{{album.id}}/images/500x500.jpg?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4" alt="album">
+                    <div class="card-img-overlay">
+                      <h5 class="card-title">{{album.name}}</h5>
+                      <!-- <p class="card-text">{{album.description}}</p> 
+                      <p class="card-text">Last updated {{album.released}}</p> -->
+                    </div>
+                  </div>
+                </button>
+              </div>
+          </div>
+  
+          <div class="col col-lg-8 col-md-8 col-12">
+            <!--Body content-->
+            <div *ngIf="tsongs" name="songContainer" class="songstrack" >
+              <h3>{{ albName }}</h3>
+              <img class="card-img-top" src="https://api.napster.com/imageserver/v2/albums/{{albumId}}/images/500x500.jpg?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4" alt="Card image cap">
+                <table class="table mr-auto ml-auto">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Song</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="song" *ngFor="let track of albumSongs; let i=index" >
+                        <th scope="row">{{i + 1}}</th>
+                        <td>
+                            <div style="height: auto;">
+                                <div class="alert alert-secondary" role="alert">
+                                    <h5 class="card-title">{{track.name}}</h5>
+                                    <p>By : {{track.artistName}}</p>
+                                    <audio controls>
+                                        <source [(src)]="track.previewURL" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <div>
+                                        <div> 
+                                            <!-- style="visibility: hidden;" -->
+                                            <button style="border: 0;" (click)="setCommentVisible(track.id)">comment</button>
+                                            <input style="visibility: hidden;" id="input:{{track.id}}" type="text" class="commentText">
+                                            <button style="visibility: hidden;" id="button:{{track.id}}" (click)="postComment(track.id, track.name)"  class="btn btn-warning btn-sm-2">post</button>
+                                        </div>
+                                        <nav>
+                                          <button class=" btn btn-default btn-circle" (click)="addOrRemoveFavourite(track.id, track.name, i, track.previewURL)" [class.myClass]="favArrray[i]">
+                                            <mdb-icon fas icon="heart"></mdb-icon></button>
+                                            <label> &nbsp;Favorite </label>
+                                            
+                                            <button class="btn btn-default btn-circle" (click)="recommendOrUnrecommend(track.id, track.name, i, track.previewURL)" [class.myRem]="recArray[i]">
+                                            <mdb-icon fas icon="thumbs-up"></mdb-icon></button>
+                                            <label> &nbsp;Recommend </label>
+                                        </nav>
+                                    </div>  
+                                </div>
+                            </div>
+                        </td>    
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+  
+            <div *ngIf="tvideo" name="videoContainer" class="youtubevideo" >
+              <div *ngFor="let video of videoArray" class="container-fluid mr-auto ml-auto">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <div class="card" style="width: 18rem;">
+                      <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="Thumbnails">
+                      <div class="card-body">
+                        <p class="card-name">
+                          <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+                            {{video.snippet.title}}
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                
+
+              </div>
+            </div>    
+      </div>
+      <!-- end of row-fluid -->
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

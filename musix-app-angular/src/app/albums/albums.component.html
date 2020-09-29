@@ -1,0 +1,99 @@
+<div class="container-fluid mt-5  ">
+  <div class="row">
+    <div class="col col-lg-4 col-md-4 col-12 text-center">
+      <!--Sidebar content-->
+      <h3>Album : {{albName}}</h3>
+      <img class="img-fluid mt-2 mb-2" src="https://api.napster.com/imageserver/v2/albums/{{albumId}}/images/500x500.jpg?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4" alt="album">
+      <h3>By {{artistName}}</h3>
+      <nav class="nav flex-column mt-5 pt-2">
+          <button (click)="toggle('track')" class="btn btn-light btn-sm p-1"><h4>Songs</h4></button>
+          <button (click)="toggle('video')" class="btn btn-light btn-sm mt-3 mb-3 p-1"><h4>Videos</h4></button>
+        </nav>
+    </div>
+
+
+    <div class="col col-lg-8 col-md-8 col-12 songss ">
+      <!--Body content-->
+      <div *ngIf="tsongs" name="songContainer" class="songstrack" >
+          <table class="table mr-auto ml-auto">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Song</th>
+                  <!-- <th scope="col">Favourite</th>
+                  <th scope="col">Recommend</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="song" *ngFor="let track of albSongs; let i=index" >
+                  <th scope="row">{{i + 1}}</th>
+                  <td>
+                      <div style="height: auto;">
+                          <div class="alert alert-secondary" role="alert">
+                              <h5 class="card-title">{{track.name}}</h5>
+                              <p>By : {{track.artistName}}</p>
+                              <audio controls>
+                                  <source [(src)]="track.previewURL" type="audio/mpeg">
+                                  Your browser does not support the audio element.
+                              </audio>
+                              <div>
+                                  <div> 
+                                      <!-- style="visibility: hidden;" -->
+                                      <button style="border: 0;" (click)="setCommentVisible(track.id)">comment</button>
+                                      <input style="visibility: hidden;" id="input:{{track.id}}" type="text" class="commentText">
+                                      <button style="visibility: hidden;" id="button:{{track.id}}" (click)="postComment(track.id, track.name)"  class="btn btn-warning btn-sm-2">post</button>
+                                  </div>
+                                  <nav>
+                                      <button class=" btn btn-default btn-circle " (click)="addOrRemoveFavourite(track.id, track.name,i, track.previewURL)" [class.myClass]="favArrray[i]">
+                                      <mdb-icon fas icon="heart" ></mdb-icon></button>
+                                      <label> &nbsp;Favorite </label>
+                                      
+                                      <button class="btn btn-default btn-circle" (click)="recommendOrUnrecommend(track.id, track.name,i, track.previewURL)" [class.myRem]="recArray[i]">
+                                      <mdb-icon fas icon="thumbs-up" ></mdb-icon></button>
+                                      <label> &nbsp;Recommend </label>
+                                  </nav>
+                              </div>  
+                          </div>
+                      </div>
+                  </td>    
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+       <div *ngIf="tvideo" name="videoContainer" class="youtubevideo" >
+        <div *ngFor="let video of videoArray" class="container-fluid mr-auto ml-auto">
+          <ul class="nav">
+            <li class="nav-item">
+              <div class="card" style="width: 18rem;">
+                <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="Thumbnails">
+                <div class="card-body">
+                  <p class="card-name">
+                    <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+                      {{video.snippet.title}}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>    
+    </div>
+    <!-- end of row-fluid -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

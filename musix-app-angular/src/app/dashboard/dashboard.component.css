@@ -1,0 +1,47 @@
+
+.dashboard-container-1 {
+    max-height: 50%;
+    max-width: 42%;
+    overflow-x: hidden;  
+    background-color: rgba(238, 225, 225, 0.575);    
+}
+
+.dashboard-container-2, 
+.dashboard-container-3 {
+    max-width: 70%;
+    overflow-x: hidden;
+     background-color: rgba(238, 225, 225, 0.575);    
+}
+.artists{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 1000px;
+    margin-top: 8px;
+    margin-left: 15px;
+    padding-left: 2px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.artist img{
+    max-width:100%; 
+     height:auto; 
+    max-width: 250px;
+    box-shadow: 0px 0px 10px 0px #000;
+    padding: 3px 3px 3px 3px;
+
+}
+.card-id{
+    margin-top: 0%;
+    color: rgb(27, 243, 196);
+    text-align: center;
+}
+
+.card-name{
+    margin-bottom:0em ;
+    text-align: center;
+}
+button{
+border: none;
+outline:none;
+}
+

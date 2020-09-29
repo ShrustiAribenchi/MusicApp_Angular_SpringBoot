@@ -1,0 +1,15 @@
+.adbdg {
+    background-image: linear-gradient(rgba(29, 27, 26, 0.822),rgba(0, 0, 0, 0.705)),url("https://c4.wallpaperflare.com/wallpaper/689/518/346/acoustic-guitar-wallpaper-preview.jpg");
+
+    background-size: contain;
+    background-attachment: fixed;
+    
+
+
+}
+
+.text{
+    color: rgba(153, 137, 137, 0.849);
+    font-size: 50px;
+    font-weight: 100px;
+}

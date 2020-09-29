@@ -1,0 +1,11 @@
+.navbar {
+    min-height: 22%;
+    font-size: 22px;
+}
+.navbar-brand {
+    font-size: 32px;
+    font-weight: bold;
+}
+.searchbar0 {
+    min-width: 50%;
+}

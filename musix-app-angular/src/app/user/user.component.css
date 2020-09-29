@@ -1,0 +1,19 @@
+/* .decoration {
+    cursor: pointer;
+    transition-property: border;
+    transition-delay: 0.5s;
+    
+}
+.decoration:hover,
+.decoration:active {
+    border-bottom: solid red 1px;
+    transition-duration: 5s;
+} */
+.menuLinks:hover,
+.menuLinks:active {
+    text-decoration: underline;
+}
+.img-circle{
+    border-radius: 50%;
+    margin:10px;
+}

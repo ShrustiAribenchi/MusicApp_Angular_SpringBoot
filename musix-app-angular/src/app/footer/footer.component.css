@@ -1,0 +1,108 @@
+
+footer
+{
+    background-color: rgb(231, 231, 231);
+    padding: 20px;
+}
+
+.footer-nav{
+    list-style: none;
+    float: left;
+    margin:10vp;
+    padding-left: 0%;
+}
+
+.icons-sm{
+    margin:5px;
+    padding: 2px;
+}
+
+
+.footer-nav li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-nav li:last-child{
+margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited
+{
+    text-decoration: none;
+    border: 0;
+    color: black;
+    -webkit-transition: color 0.2s;
+    -o-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+
+
+.footer-nav li a:hover,
+.footer-nav li a:active,
+.social-links li a:hover,
+.social-links li a:active
+{
+    color: white;
+}
+
+
+footer p{
+    color: black;
+   text-align: center;
+   font-size: 90%;
+   margin-top: 20px;
+   padding-left: 20vw;
+}
+
+.fb:hover,
+.fb:active{
+   color: #3b5998;
+}
+
+.icons-sm tw-ic:hover{
+   color: #55acee;
+}
+
+.in-ic{
+    color: magenta;
+}
+
+.in-ic:hover{
+    color: rgb(151, 72, 230);
+}
+
+/* .in-ic */
+/*
+.social-links{
+    list-style: none;
+   float:right; 
+    padding-left: 0%;
+    display: inline-block;
+    margin-right: 10px;
+}
+.gplus-ic:hover{
+   color: #dd4b39;
+}
+.ins-ic:hover{
+   color:#8a3ab9;
+}
+.social-links li a:link,
+.social-links li a:visited{
+    font-size: 180%;
+}
+
+
+.social-links li a:link,
+.social-links li a:visited
+
+.icons-sm
+{
+    transition: 0.2s;
+}
+
+icons-sm tw-ic,
+icons-sm gplus-ic,
+icons-sm ins-ic */
